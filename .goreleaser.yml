@@ -1,0 +1,33 @@
+# https://goreleaser.com
+
+env:
+- GO111MODULE=on
+
+project_name: crisp
+
+before:
+  hooks:
+    - go mod download
+
+builds:
+- binary: crisp
+  id: crisp
+  env:
+  - CGO_ENABLED=0
+  goos:
+  - darwin
+  - linux
+  goarch:
+  - amd64
+  main: cmd/crisp/main.go
+
+snapshot:
+  name_template: "{{ .ProjectName}}_{{ .ShortCommit  }}"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+    - '^docs'
+    - '^test'
+    - '^merge'
