@@ -8,6 +8,7 @@ import (
 	"github.com/ahstn/crisp/pkg/git"
 	"github.com/ahstn/crisp/pkg/kubernetes"
 	"github.com/ahstn/crisp/pkg/path"
+	"github.com/talal/go-bits/color"
 )
 
 // Info returns the prompt info line.
@@ -27,6 +28,15 @@ func Info() string {
 	}
 
 	return strings.Join(line, " ")
+}
+
+// Symbol returns the prompt character
+func Symbol() string {
+	if overwrite := os.Getenv("CRISP_SYMBOL"); overwrite != "" {
+		return color.Sprintf(color.Magenta, overwrite)
+	}
+
+	return color.Sprintf(color.Magenta, "❯")
 }
 
 func appendUnlessEmpty(list []string, val string) []string {
