@@ -38,7 +38,7 @@ func Branch(cwd string) string {
 	if ok, err := isDirty(); ok && err == nil {
 		refSpecDisplay += dirtySymbol
 	}
-	return color.Sprintf(color.White, refSpecDisplay)
+	return color.Sprintf(color.BrightBlack, refSpecDisplay)
 }
 
 func isDirty() (bool, error) {

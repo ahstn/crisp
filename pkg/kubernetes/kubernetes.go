@@ -31,7 +31,8 @@ func Context() string {
 	}
 
 	context, namespace := clusterInfo(path)
-	return color.Sprintf(color.Blue, "☸️  %v:%v", context, namespace)
+	return fmt.Sprintf(" ☸️  %v:%v", color.Sprintf(color.Yellow, context),
+		color.Sprintf(color.White, namespace))
 }
 
 func clusterInfo(configPath string) (string, string) {
