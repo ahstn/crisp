@@ -1,0 +1,4 @@
+.gopath/pkg
+build
+release
+crisp
