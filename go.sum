@@ -1,3 +1,5 @@
+github.com/distatus/battery v0.9.0 h1:8NS5o00/j3Oh2xgocA6pQROTp5guoR+s8CZlWzHC4QM=
+github.com/distatus/battery v0.9.0/go.mod h1:gGO7GxHTi1zlRT+cAj8uGG0/8HFiqAeH0TJvoipnuPs=
 github.com/talal/go-bits v0.0.0-20190112130027-6c329ec8a3e2 h1:RugS4dg5Qio894yMikQ6RbsenApo3YMPN+wllQH4uQI=
 github.com/talal/go-bits v0.0.0-20190112130027-6c329ec8a3e2/go.mod h1:HGF/PnMf8971sLP+5fp0PMYV5EN3fwhhDJQmgisBGLQ=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=

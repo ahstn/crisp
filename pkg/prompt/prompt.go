@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/ahstn/crisp/pkg/battery"
 	"github.com/ahstn/crisp/pkg/git"
 	"github.com/ahstn/crisp/pkg/kubernetes"
 	"github.com/ahstn/crisp/pkg/path"
@@ -32,11 +33,12 @@ func Info() string {
 
 // Symbol returns the prompt character
 func Symbol() string {
+	symbol := "❯"
 	if overwrite := os.Getenv("CRISP_SYMBOL"); overwrite != "" {
-		return color.Sprintf(color.Magenta, overwrite)
+		symbol = overwrite
 	}
 
-	return color.Sprintf(color.Magenta, "❯")
+	return color.Sprintf(color.Magenta, "%v%v", battery.Percentage(), symbol)
 }
 
 func appendUnlessEmpty(list []string, val string) []string {
