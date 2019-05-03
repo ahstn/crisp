@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-
 	os.Stdout.Write([]byte("\n" + prompt.Info() + "\n" + prompt.Symbol()))
 }
