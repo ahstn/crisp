@@ -24,9 +24,7 @@ func Info() string {
 
 	line = appendUnlessEmpty(line, path.CurrentDirectory(cwd))
 	line = appendUnlessEmpty(line, git.Branch(cwd))
-	if os.Getenv("CRISP_KUBE") != "0" {
-		line = appendUnlessEmpty(line, kubernetes.Context())
-	}
+	line = appendUnlessEmpty(line, kubernetes.Context())
 
 	return strings.Join(line, " ")
 }

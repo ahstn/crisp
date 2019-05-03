@@ -25,6 +25,9 @@ type Config struct {
 // Context returns the current Kubernetes context and namespace.
 // $KUBECONFIG will be used if it's set, otherwise default to ~/.kube/config
 func Context() string {
+	if os.Getenv("CRISP_KUBE") != "0" {
+		return ""
+	}
 	path := os.Getenv("HOME") + "/.kube/config"
 	if env, ok := os.LookupEnv("KUBECONFIG"); ok {
 		path = env
