@@ -16,7 +16,6 @@ const dirtySymbol = "*"
 
 func Branch(cwd string) string {
 	gitDir, _ := findGitRepo(cwd)
-	fmt.Println("gitdir:" + gitDir)
 	if gitDir == "" {
 		return ""
 	}
