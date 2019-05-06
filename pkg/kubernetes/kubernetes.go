@@ -25,7 +25,7 @@ type Config struct {
 // Context returns the current Kubernetes context and namespace.
 // $KUBECONFIG will be used if it's set, otherwise default to ~/.kube/config
 func Context() string {
-	if os.Getenv("CRISP_KUBE") != "0" {
+	if os.Getenv("CRISP_KUBE") == "0" {
 		return ""
 	}
 	path := os.Getenv("HOME") + "/.kube/config"
@@ -34,7 +34,7 @@ func Context() string {
 	}
 
 	context, namespace := clusterInfo(path)
-	return fmt.Sprintf(" ☸️  %v:%v", color.Sprintf(color.Yellow, context),
+	return fmt.Sprintf(" ☸️ %v:%v", color.Sprintf(color.Yellow, context),
 		color.Sprintf(color.White, namespace))
 }
 
@@ -55,6 +55,9 @@ func clusterInfo(configPath string) (string, string) {
 
 	for _, c := range cfg.Contexts {
 		if c.Name == cfg.CurrentContext {
+			if c.Context.Namespace == "" {
+				c.Context.Namespace = "default"
+			}
 			return strings.TrimSpace(cfg.CurrentContext),
 				strings.TrimSpace(c.Context.Namespace)
 		}
