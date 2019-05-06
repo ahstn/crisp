@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/ahstn/crisp/pkg/battery"
+	"github.com/ahstn/crisp/pkg/docker"
 	"github.com/ahstn/crisp/pkg/git"
 	"github.com/ahstn/crisp/pkg/kubernetes"
 	"github.com/ahstn/crisp/pkg/path"
@@ -25,6 +26,7 @@ func Info() string {
 	line = appendUnlessEmpty(line, path.CurrentDirectory(cwd))
 	line = appendUnlessEmpty(line, git.Branch(cwd))
 	line = appendUnlessEmpty(line, kubernetes.Context())
+	line = appendUnlessEmpty(line, docker.Host())
 
 	return strings.Join(line, " ")
 }
